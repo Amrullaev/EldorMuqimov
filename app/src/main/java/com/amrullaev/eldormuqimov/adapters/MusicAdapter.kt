@@ -17,11 +17,11 @@ class MusicAdapter(
         RecyclerView.ViewHolder(itemMusicBinding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun onBind(musicData: MusicData) {
+        fun onBind(musicData: MusicData,position: Int) {
             itemMusicBinding.musicName.text = musicData.audioName
             itemMusicBinding.musicImage.setImageResource(musicData.audioImage)
             itemMusicBinding.root.setOnClickListener {
-                listener.onClick(musicData)
+                listener.onClick(musicData,position)
             }
         }
     }
@@ -31,12 +31,12 @@ class MusicAdapter(
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.onBind(list[position])
+        holder.onBind(list[position],position)
     }
 
     override fun getItemCount(): Int = list.size
 
     interface OnclickListener {
-        fun onClick(musicData: MusicData)
+        fun onClick(musicData: MusicData,position: Int)
     }
 }

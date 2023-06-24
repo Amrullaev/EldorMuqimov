@@ -54,7 +54,7 @@ class MusicFragment : Fragment() {
         binding.musicName.text = musicName.audioName
         binding.musicImage.setImageResource(musicName.audioImage)
 
-        mediaPlayer = MediaPlayer.create(requireContext(), music)
+        mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
 
         binding.seekbar.progress = 0
         binding.seekbar.max = mediaPlayer.duration
@@ -101,7 +101,14 @@ class MusicFragment : Fragment() {
 
 
         binding.nextBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "Hozircha ishlamayapti", Toast.LENGTH_SHORT).show()
+            music += 1
+            binding.musicName.text=songs[music].audioName
+            binding.musicImage.setImageResource(songs[music].audioImage)
+
+            mediaPlayer.stop()
+            mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
+            mediaPlayer.start()
+
         }
 
         binding.backBtn.setOnClickListener {

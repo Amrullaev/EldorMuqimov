@@ -12,6 +12,7 @@ import com.amrullaev.eldormuqimov.adapters.MusicAdapter
 import com.amrullaev.eldormuqimov.databinding.FragmentHomeBinding
 import com.amrullaev.eldormuqimov.models.MusicData
 import com.amrullaev.eldormuqimov.utils.Constanta
+import java.text.FieldPosition
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -24,9 +25,9 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
         val musicAdapter = MusicAdapter(audioLoadList(), object : MusicAdapter.OnclickListener {
-            override fun onClick(musicData: MusicData) {
+            override fun onClick(musicData: MusicData,position: Int) {
                 val bundle = Bundle()
-                bundle.putInt("audio", musicData.id)
+                bundle.putInt("audio", position)
                 bundle.putSerializable("music", musicData)
                 findNavController().navigate(R.id.musicFragment, bundle)
             }
