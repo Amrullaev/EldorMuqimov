@@ -93,8 +93,21 @@ class MusicFragment : Fragment() {
         handler.postDelayed(runnable, 1000)
 
         mediaPlayer.setOnCompletionListener {
-            binding.playBtn.setImageResource(R.drawable.play_btn)
             binding.seekbar.progress = 0
+            if (music < songs.size - 1) {
+                music += 1
+            } else {
+                music = 0
+            }
+            binding.musicImage.setImageResource(songs[music].audioImage)
+            binding.musicName.text = songs[music].audioName
+            try {
+                mediaPlayer.stop()
+                mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
+                mediaPlayer.start()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
 
 
