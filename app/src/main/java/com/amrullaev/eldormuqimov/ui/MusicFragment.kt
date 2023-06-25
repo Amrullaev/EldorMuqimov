@@ -114,35 +114,36 @@ class MusicFragment : Fragment() {
         binding.nextBtn.setOnClickListener {
             if (music < songs.size - 1) {
                 music += 1
-                binding.musicImage.setImageResource(songs[music].audioImage)
-                binding.musicName.text = songs[music].audioName
-                try {
-                    mediaPlayer.stop()
-                    mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
-                    mediaPlayer.start()
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
             } else {
                 music = 0
+            }
+            binding.musicImage.setImageResource(songs[music].audioImage)
+            binding.musicName.text = songs[music].audioName
+            try {
+                mediaPlayer.stop()
+                mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
+                mediaPlayer.start()
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 
         binding.backBtn.setOnClickListener {
             if (music > 0) {
                 music -= 1
-                binding.musicImage.setImageResource(songs[music].audioImage)
-                binding.musicName.text = songs[music].audioName
-                try {
-                    mediaPlayer.stop()
-                    mediaPlayer.reset()
-                    mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
-                    mediaPlayer.start()
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
+
             } else {
                 music = songs.size - 1
+            }
+            binding.musicImage.setImageResource(songs[music].audioImage)
+            binding.musicName.text = songs[music].audioName
+            try {
+                mediaPlayer.stop()
+                mediaPlayer.reset()
+                mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
+                mediaPlayer.start()
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 
