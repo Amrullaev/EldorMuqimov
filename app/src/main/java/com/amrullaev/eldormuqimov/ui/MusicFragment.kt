@@ -2,7 +2,6 @@ package com.amrullaev.eldormuqimov.ui
 
 
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -13,7 +12,6 @@ import android.view.animation.AnimationUtils
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.amrullaev.eldormuqimov.R
 import com.amrullaev.eldormuqimov.databinding.FragmentMusicBinding
 import com.amrullaev.eldormuqimov.models.MusicData
@@ -100,15 +98,35 @@ class MusicFragment : Fragment() {
         }
 
 
+//        binding.nextBtn.setOnClickListener {
+//
+//            music += 1
+//            binding.musicName.text = songs[music].audioName
+//            binding.musicImage.setImageResource(songs[music].audioImage)
+//
+//            mediaPlayer.stop()
+//            mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
+//            mediaPlayer.start()
+//            current = 0
+//
+//        }
+
         binding.nextBtn.setOnClickListener {
-            music += 1
-            binding.musicName.text=songs[music].audioName
-            binding.musicImage.setImageResource(songs[music].audioImage)
-
-            mediaPlayer.stop()
-            mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
-            mediaPlayer.start()
-
+            if (music < songs.size - 1) {
+                music += 1
+                binding.musicImage.setImageResource(songs[music].audioImage)
+                binding.musicName.text = songs[music].audioName
+                try {
+                    mediaPlayer.stop()
+                    mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
+                    mediaPlayer.prepareAsync()
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                music = 0
+            }
         }
 
         binding.backBtn.setOnClickListener {
