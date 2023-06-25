@@ -119,7 +119,6 @@ class MusicFragment : Fragment() {
                 try {
                     mediaPlayer.stop()
                     mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
-                    mediaPlayer.prepareAsync()
                     mediaPlayer.start()
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -130,7 +129,21 @@ class MusicFragment : Fragment() {
         }
 
         binding.backBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "Hozircha ishlamayapti", Toast.LENGTH_SHORT).show()
+            if (music > 0) {
+                music -= 1
+                binding.musicImage.setImageResource(songs[music].audioImage)
+                binding.musicName.text = songs[music].audioName
+                try {
+                    mediaPlayer.stop()
+                    mediaPlayer.reset()
+                    mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                music = songs.size - 1
+            }
         }
 
 
