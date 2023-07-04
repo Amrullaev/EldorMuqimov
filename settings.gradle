@@ -9,7 +9,14 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        maven { url 'https://jitpack.io' }
         mavenCentral()
+        repositories {
+            google()
+
+            jcenter()
+            mavenCentral()
+        }
     }
 }
 rootProject.name = "Eldor Muqimov"

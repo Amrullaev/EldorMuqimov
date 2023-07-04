@@ -6,13 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.MusicFragment">
 
+    <ImageView
+        android:id="@+id/back_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/eldor7" />
+
+    <io.alterac.blurkit.BlurLayout
+        android:id="@+id/blurLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:blk_blurRadius="10"
+        app:blk_downscaleFactor="0.12"
+        app:blk_fps="0" />
+
     <TextView
         android:id="@+id/music_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:text="Qalandarim"
-        android:textColor="@color/black"
+        android:textColor="#364F6B"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/cv_image"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,9 +36,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:cardCornerRadius="80dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

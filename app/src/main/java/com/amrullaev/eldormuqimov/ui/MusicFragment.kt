@@ -8,9 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.SeekBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.amrullaev.eldormuqimov.R
 import com.amrullaev.eldormuqimov.databinding.FragmentMusicBinding
@@ -35,10 +33,6 @@ class MusicFragment : Fragment() {
 
 
         songs = ArrayList()
-        val animationSimple = AnimationUtils.loadAnimation(
-            requireContext(),
-            R.anim.simple_anim
-        )
 
 
         var music = requireArguments().getInt("audio")
@@ -66,7 +60,6 @@ class MusicFragment : Fragment() {
                 mediaPlayer.pause()
                 binding.playBtn.setImageResource(R.drawable.play_btn)
             }
-            binding.cvImage.startAnimation(animationSimple)
         }
 
         binding.seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -111,18 +104,7 @@ class MusicFragment : Fragment() {
         }
 
 
-//        binding.nextBtn.setOnClickListener {
-//
-//            music += 1
-//            binding.musicName.text = songs[music].audioName
-//            binding.musicImage.setImageResource(songs[music].audioImage)
-//
-//            mediaPlayer.stop()
-//            mediaPlayer = MediaPlayer.create(requireContext(), songs[music].id)
-//            mediaPlayer.start()
-//            current = 0
-//
-//        }
+
 
         binding.nextBtn.setOnClickListener {
             if (music < songs.size - 1) {
@@ -159,9 +141,6 @@ class MusicFragment : Fragment() {
                 e.printStackTrace()
             }
         }
-
-
-
 
         return binding.root
 
