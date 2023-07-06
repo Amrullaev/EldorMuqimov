@@ -1,7 +1,9 @@
 package com.amrullaev.eldormuqimov.ui
 
 
+
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -9,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.amrullaev.eldormuqimov.R
 import com.amrullaev.eldormuqimov.databinding.FragmentMusicBinding
@@ -25,6 +28,7 @@ class MusicFragment : Fragment() {
     private var mediaPlayer: MediaPlayer = MediaPlayer()
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,6 +56,7 @@ class MusicFragment : Fragment() {
         binding.seekbar.max = mediaPlayer.duration
 
         binding.playBtn.setOnClickListener {
+
             if (!mediaPlayer.isPlaying) {
 
                 mediaPlayer.start()
@@ -145,6 +150,7 @@ class MusicFragment : Fragment() {
         return binding.root
 
     }
+
 
 
     override fun onDestroy() {
