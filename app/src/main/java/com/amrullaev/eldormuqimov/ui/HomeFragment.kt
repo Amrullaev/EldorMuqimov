@@ -1,11 +1,13 @@
 package com.amrullaev.eldormuqimov.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.amrullaev.eldormuqimov.R
 import com.amrullaev.eldormuqimov.adapters.MusicAdapter
@@ -17,15 +19,18 @@ import java.text.FieldPosition
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = requireNotNull(_binding)
+    var fabVisible = false
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
+        fabVisible = false
 
         val musicAdapter = MusicAdapter(audioLoadList(), object : MusicAdapter.OnclickListener {
-            override fun onClick(musicData: MusicData,position: Int) {
+            override fun onClick(musicData: MusicData, position: Int) {
                 val bundle = Bundle()
                 bundle.putInt("audio", position)
                 bundle.putSerializable("music", musicData)
@@ -35,6 +40,63 @@ class HomeFragment : Fragment() {
         })
         binding.rv.adapter = musicAdapter
         Constanta.musicList = audioLoadList()
+
+        binding.idFABAdd.setOnClickListener {
+            // on below line we are checking
+            // fab visible variable.
+            if (!fabVisible) {
+
+                // if its false we are displaying home fab
+                // and settings fab by changing their
+                // visibility to visible.
+                binding.idFABHome.show()
+                binding.idFABSettings.show()
+
+                // on below line we are setting
+                // their visibility to visible.
+                binding.idFABHome.visibility = View.VISIBLE
+                binding.idFABSettings.visibility = View.VISIBLE
+
+                // on below line we are checking image icon of add fab
+                binding.idFABAdd.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_close_24))
+
+                // on below line we are changing
+                // fab visible to true
+                fabVisible = true
+            } else {
+
+                // if the condition is true then we
+                // are hiding home and settings fab
+                binding.idFABHome.hide()
+                binding.idFABSettings.hide()
+
+                // on below line we are changing the
+                // visibility of home and settings fab
+                binding.idFABHome.visibility = View.GONE
+                binding.idFABSettings.visibility = View.GONE
+
+                // on below line we are changing image source for add fab
+                binding.idFABAdd.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_add_24))
+
+                // on below line we are changing
+                // fab visible to false.
+                fabVisible = false
+            }
+        }
+
+        // on below line we are adding
+        // click listener for our home fab
+        binding.idFABHome.setOnClickListener {
+
+            findNavController().navigate(R.id.aboutFragment)
+        }
+
+        // on below line we are adding on
+        // click listener for settings fab
+        binding.idFABSettings.setOnClickListener {
+            findNavController().navigate(R.id.aboutMusicFragment)
+        }
+
 
         return binding.root
     }
