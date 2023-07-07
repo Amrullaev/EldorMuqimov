@@ -4,13 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.amrullaev.eldormuqimov.R
+import androidx.fragment.app.Fragment
 import com.amrullaev.eldormuqimov.databinding.FragmentAboutMusicBinding
-import com.amrullaev.eldormuqimov.databinding.FragmentHomeBinding
 
 
 class AboutMusicFragment : Fragment() {
@@ -22,6 +20,9 @@ class AboutMusicFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAboutMusicBinding.inflate(layoutInflater)
+
+
+
         return binding.root
     }
 
@@ -30,6 +31,12 @@ class AboutMusicFragment : Fragment() {
         binding.infoCv2.setOnClickListener { open("https://www.youtube.com/@eldormuqimov9341") }
         binding.infoCv6.setOnClickListener { open("https://t.me/+5jfvDxEDnJFhNTcy") }
         binding.infoCv4.setOnClickListener { open("https://www.instagram.com/eldor__muqimov/") }
+        binding.infoCv8.setOnClickListener {
+            val phone = "+998936968890"
+            val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
+            startActivity(intent)
+
+        }
     }
 
     private fun open(uri: String) {

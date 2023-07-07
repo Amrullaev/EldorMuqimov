@@ -20,7 +20,7 @@
             android:id="@+id/title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="start"
+            android:gravity="center"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
             android:text="Biz haqimizda"

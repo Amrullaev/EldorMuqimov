@@ -21,10 +21,14 @@ class AboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAboutBinding.inflate(layoutInflater)
-        val alertDialog = AlertDialog.Builder(binding.root.context, R.style.SheetDialog)
-        val itemDialog = ItemDialogBinding.inflate(layoutInflater)
-        alertDialog.setView(itemDialog.root)
-        alertDialog.show()
+
+        binding.infoCard.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(binding.root.context, R.style.SheetDialog)
+            val itemDialog = ItemDialogBinding.inflate(layoutInflater)
+            alertDialog.setView(itemDialog.root)
+            alertDialog.show()
+        }
+
         return binding.root
     }
 

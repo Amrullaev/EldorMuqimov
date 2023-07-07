@@ -76,51 +76,6 @@
         </androidx.cardview.widget.CardView>
 
 
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/info_cv4"-->
-    <!--        android:layout_width="350dp"-->
-    <!--        android:layout_height="56dp"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        android:backgroundTint="#3ACA41"-->
-    <!--        app:cardCornerRadius="12dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/info_cv3">-->
-
-    <!--        <TextView-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:gravity="center"-->
-    <!--            android:text="@string/Telegram_bot"-->
-    <!--            android:textColor="@color/white"-->
-    <!--            android:textSize="24sp" />-->
-
-
-    <!--    </androidx.cardview.widget.CardView>-->
-
-
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/info_cv5"-->
-    <!--        android:layout_width="350dp"-->
-    <!--        android:layout_height="56dp"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        android:backgroundTint="#1976D2"-->
-    <!--        app:cardCornerRadius="12dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/info_cv4">-->
-
-    <!--        <TextView-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:gravity="center"-->
-    <!--            android:text="@string/boshqa_dasturlar"-->
-    <!--            android:textColor="@color/white"-->
-    <!--            android:textSize="24sp" />-->
-
-
-    <!--    </androidx.cardview.widget.CardView>-->
-
     <androidx.cardview.widget.CardView
         android:id="@+id/info_cv6"
         android:layout_width="350dp"
@@ -137,6 +92,28 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Telegram kanal"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/info_cv8"
+        android:layout_width="350dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0288D1"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_cv4">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Qo'ng'iroq qilish"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
